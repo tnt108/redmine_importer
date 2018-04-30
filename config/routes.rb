@@ -1,5 +1,4 @@
-if Rails::VERSION::MAJOR >= 3
-  RedmineApp::Application.routes.draw do
-    match '/importer', :to => 'importer#index', :via => [:get, :post]
-  end
+ActionController::Routing::Routes.draw do |map|
+  map.connect '/importer/index', :controller => 'importer', :action => 'index'
+  map.connect '/importer/match', :controller => 'importer', :action => 'match'
 end
