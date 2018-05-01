@@ -12,7 +12,7 @@ ko:
     label_toplines: "%{value}의 상위 라인 참조："
     label_match_columns: "일치하는 열"
     label_match_select: "각 열에서 설정할 필드를 선택하십시오:"
-    label_import_rule: "규칙 가져 오기"
+    label_import_rule: "가져오기 규칙"
     label_default_tracker: "기본 추적 프로그램 :"
     label_importer_send_emails: "알림 이메일 보내기"
     label_importer_add_categories: "카테고리 자동 추가"
