@@ -35,7 +35,7 @@
 					matched = v.to_s if v.to_s.gsub(/\s/,'_').gsub(/%_Done/,'done_ratio').casecmp(column) == 0
 				end
 			%>
-			<label class="tabular"> <%= column %>: <%= select_tag "fields_map[#{column}]", options_for_select([l('redmine_importer.option_ignore')] + @attrs, matched ) %></label>
+			<label class="label.tabular"> <%= column %>: <%= select_tag "fields_map[#{column}]", options_for_select([l('redmine_importer.option_ignore')] + @attrs, matched ) %></label>
 		<% end %>
 	</fieldset>
 	
