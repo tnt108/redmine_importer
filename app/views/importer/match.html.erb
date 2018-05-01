@@ -30,8 +30,12 @@
 		<legend><%= l('redmine_importer.label_match_select') %></legend>
 		<% @headers.each do |column| %>
 			<br/>
-			<% matched = '' @attrs.each do |k,v| matched = v.to_s if v.to_s.gsub(/\s/,'_').gsub(/%_Done/,'done_ratio').casecmp(column) == 0	end	%>
-			<label class="tabular"><%= column %>: <%= select_tag "fields_map[#{column}]", options_for_select([l('redmine_importer.option_ignore')] + @attrs, matched ) %></label>
+			<% matched = ''
+				@attrs.each do |k,v|
+					matched = v.to_s if v.to_s.gsub(/\s/,'_').gsub(/%_Done/,'done_ratio').casecmp(column) == 0
+				end
+			%>
+			<label class="tabular"> <%= column %>: <%= select_tag "fields_map[#{column}]", options_for_select([l('redmine_importer.option_ignore')] + @attrs, matched ) %></label>
 		<% end %>
 	</fieldset>
 	
