@@ -34,7 +34,7 @@ class ImporterController < ApplicationController
   ISSUE_ATTRS = [:id, :subject, :assigned_to, :fixed_version,
     :author, :description, :category, :priority, :tracker, :status,
     :start_date, :due_date, :done_ratio, :estimated_hours,
-    :parent_issue, :watchers, :created_on, :updated_on ]
+    :parent_issue, :watchers, :created_on, :updated_on, :epic_type, :step_id ]
   
   def index
   end
