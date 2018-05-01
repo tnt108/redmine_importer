@@ -266,6 +266,9 @@ class ImporterController < ApplicationController
         issue.tracker_id = tracker != nil ? tracker.id : default_tracker
         issue.author_id = author != nil ? author.id : User.current.id
 
+        issue.epic_type = row[attrs_map["epic_type"]]
+        issue.step_id = row[attrs_map["step_id"]]
+  
       rescue ActiveRecord::RecordNotFound
         @failed_count += 1
         @failed_issues[@failed_count] = row
@@ -351,6 +354,10 @@ class ImporterController < ApplicationController
       issue.fixed_version_id = fixed_version_id != nil ? fixed_version_id : issue.fixed_version_id
       issue.done_ratio = row[attrs_map["done_ratio"]] || issue.done_ratio
       issue.estimated_hours = row[attrs_map["estimated_hours"]] || issue.estimated_hours
+
+      issue.epic_type = epic_type != nil ? epic_type : issue.epic_type
+      issue.step_id = step_id != nil ? step_id : issue.step_id
+
       issue.update_attributes({:created_on => row[attrs_map["created_on"]], :updated_on => row[attrs_map["updated_on"]] })
 
       # parent issues
@@ -427,7 +434,7 @@ class ImporterController < ApplicationController
       next if watcher_failed_count > 0
 
       if (!issue.save)
-        # 记录?��?
+        #
         @failed_count += 1
         @failed_issues[@failed_count] = row
         flash.append(:warning,"The following data-validation errors occurred on issue #{@failed_count} in the list below")
