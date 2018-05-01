@@ -18,7 +18,7 @@ en:
   label_importer_add_versions: "대상 버전 자동 추가"
   label_update_issue: "기존 이슈 업데이트"
   label_journal_field: "노트로 사용할 열 선택 :"
-  label_unique_field: "고유 값 열 선택 (기존 문제 업데이트 또는 관계 가져 오기에 필요) :"
+  label_unique_field: "고유 값 열 선택 (기존  업데이트 또는 관계 가져 오기에 필요) :"
   label_update_other_project: "다른 프로젝트의 이슈 업데이트 허용"
   label_ignore_non_exist: "존재하지 않는 이슈 무시"
   label_rule_name: "규칙 이름 입력"
