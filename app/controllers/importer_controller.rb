@@ -355,8 +355,8 @@ class ImporterController < ApplicationController
       issue.done_ratio = row[attrs_map["done_ratio"]] || issue.done_ratio
       issue.estimated_hours = row[attrs_map["estimated_hours"]] || issue.estimated_hours
 
-      issue.epic_type = row[attrs_map["epic_type"]
-      issue.step_id = row[attrs_map["step_id"]
+      issue.epic_type = row[attrs_map["epic_type"]]
+      issue.step_id = row[attrs_map["step_id"]]
 
       issue.update_attributes({:created_on => row[attrs_map["created_on"]], :updated_on => row[attrs_map["updated_on"]] })
 
