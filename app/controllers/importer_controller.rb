@@ -270,11 +270,14 @@ class ImporterController < ApplicationController
           epic_type = row[attrs_map["epic_type"]]
           if epic_type != 0 && epic_type != 1 && epic_type != 2
             epic_type = 0
+          end
           issue.epic_type = epic_type
-  
+        end
+
         if Milestone.find(row[attrs_map["step_id"]]) != nil
           issue.step_id = row[attrs_map["step_id"]]
-          
+        end
+
       rescue ActiveRecord::RecordNotFound
         @failed_count += 1
         @failed_issues[@failed_count] = row
@@ -365,10 +368,13 @@ class ImporterController < ApplicationController
         epic_type = row[attrs_map["epic_type"]]
         if epic_type != 0 && epic_type != 1 && epic_type != 2
           epic_type = 0
+        end
         issue.epic_type = epic_type
+      end
 
       if Milestone.find(row[attrs_map["step_id"]]) != nil
         issue.step_id = row[attrs_map["step_id"]]
+      end
       
       logger.error "epic_type : " + row[attrs_map["epic_type"]]
       logger.error "step_id : " + row[attrs_map["step_id"]]
