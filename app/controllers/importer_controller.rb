@@ -357,6 +357,8 @@ class ImporterController < ApplicationController
 
       issue.epic_type = row[attrs_map["epic_type"]]
       issue.step_id = row[attrs_map["step_id"]]
+      logger.error "epic_type : " + row[attrs_map["epic_type"]]
+      logger.error "step_id : " + row[attrs_map["step_id"]]
 
       issue.update_attributes({:created_on => row[attrs_map["created_on"]], :updated_on => row[attrs_map["updated_on"]] })
 
