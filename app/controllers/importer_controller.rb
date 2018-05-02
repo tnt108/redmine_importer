@@ -266,9 +266,15 @@ class ImporterController < ApplicationController
         issue.tracker_id = tracker != nil ? tracker.id : default_tracker
         issue.author_id = author != nil ? author.id : User.current.id
 
-        issue.epic_type = row[attrs_map["epic_type"]]
-        issue.step_id = row[attrs_map["step_id"]]
-  
+        if row[attrs_map["epic_type"]] != nil
+          epic_type = row[attrs_map["epic_type"]]
+          if epic_type != 0 && epic_type != 1 && epic_type != 2
+            epic_type = 0
+          issue.epic_type = epic_type
+
+        if row[attrs_map["step_id"]] != nil
+          issue.step_id = Milestone.find(row[attrs_map["step_id"]]) != nil ? row[attrs_map["step_id"]] : nil
+    
       rescue ActiveRecord::RecordNotFound
         @failed_count += 1
         @failed_issues[@failed_count] = row
@@ -354,9 +360,16 @@ class ImporterController < ApplicationController
       issue.fixed_version_id = fixed_version_id != nil ? fixed_version_id : issue.fixed_version_id
       issue.done_ratio = row[attrs_map["done_ratio"]] || issue.done_ratio
       issue.estimated_hours = row[attrs_map["estimated_hours"]] || issue.estimated_hours
+      
+      if row[attrs_map["epic_type"]] != nil
+        epic_type = row[attrs_map["epic_type"]]
+        if epic_type != 0 && epic_type != 1 && epic_type != 2
+          epic_type = 0
+        issue.epic_type = epic_type
 
-      issue.epic_type = row[attrs_map["epic_type"]]
-      issue.step_id = row[attrs_map["step_id"]]
+      if row[attrs_map["step_id"]] != nil
+        issue.step_id = Milestone.find(row[attrs_map["step_id"]]) != nil ? row[attrs_map["step_id"]] : nil
+    
       logger.error "epic_type : " + row[attrs_map["epic_type"]]
       logger.error "step_id : " + row[attrs_map["step_id"]]
 
