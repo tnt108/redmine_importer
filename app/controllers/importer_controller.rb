@@ -49,7 +49,12 @@ class ImporterController < ApplicationController
     iip.encoding = params[:encoding]
     iip.created = Time.new
     converter = importer_encoding_converter(iip.encoding)
-    file_data = params[:file].read
+    if params[:file] != nil
+      file_data = params[:file].read
+    else
+      file_data = ""
+    end
+
     iip.csv_data = (converter ? converter.call(file_data) : file_data)
     iip.save
 
