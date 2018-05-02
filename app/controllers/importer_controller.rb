@@ -51,8 +51,10 @@ class ImporterController < ApplicationController
     converter = importer_encoding_converter(iip.encoding)
     if params[:file] != nil
       file_data = params[:file].read
+      @original_filename = params[:file].original_filename
     else
       file_data = ""
+      @original_filename = ""
     end
 
     iip.csv_data = (converter ? converter.call(file_data) : file_data)
@@ -63,7 +65,6 @@ class ImporterController < ApplicationController
     # Put the timestamp in the params to detect
     # users with two imports in progress
     @import_timestamp = iip.created.strftime("%Y-%m-%d %H:%M:%S")
-    @original_filename = params[:file].original_filename
     
     # display sample
     sample_count = 5
