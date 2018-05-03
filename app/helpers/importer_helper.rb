@@ -2,8 +2,9 @@
 require "nkf"
 
 module ImporterHelper
-  ENCODINGS_FOR_SELECT = [ [ "UTF8", "U" ], [ "EUC", "EUC" ], [ "SJIS", "S" ], [ "None", "N" ] ]
+  ENCODINGS_FOR_SELECT = [ [ "EUC-KR", "K" ], [ "UTF8", "U" ], [ "EUC", "EUC" ], [ "SJIS", "S" ], [ "None", "N" ] ]
   ENCODING_CONVERTER = {
+    "K"   => Proc.new{ |str| NKF.nkf(rb_nkf_enc_get("EUC-KR"), str) },
     "U"   => nil,  # Need not to convert
     "EUC" => Proc.new{ |str| NKF.nkf("-Ewm0", str) },
     "S"   => Proc.new{ |str| NKF.nkf("-Swm0", str) },
