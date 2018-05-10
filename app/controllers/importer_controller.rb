@@ -77,7 +77,8 @@ class ImporterController < ApplicationController
     :quote_char=>iip.quote_char, :col_sep=>iip.col_sep}).each do |row|
 
       for index in 0 ... row.size
-        row[index] = row[index].squeeze('"').strip
+        row[index] = row[index].squeeze(iip.quote_char).strip
+        logger.error "row[#{index}] : " + row[index]
       end
 
       @samples[i] = row
