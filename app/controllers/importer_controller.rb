@@ -376,8 +376,8 @@ class ImporterController < ApplicationController
       issue.done_ratio = row[attrs_map["done_ratio"]] || issue.done_ratio
       issue.estimated_hours = row[attrs_map["estimated_hours"]] || issue.estimated_hours
 
-      logger.error "epic_type : " + (row[attrs_map["epic_type"]] || '')
-      logger.error "step_id : " + (row[attrs_map["step_id"]] || '')
+      # logger.error "epic_type : " + (row[attrs_map["epic_type"]] || '')
+      # logger.error "step_id : " + (row[attrs_map["step_id"]] || '')
 
       if row[attrs_map["epic_type"]] != nil
         epic_type = row[attrs_map["epic_type"]]
@@ -400,6 +400,8 @@ class ImporterController < ApplicationController
         parent_value = row[attrs_map["parent_issue"]]
         if parent_value && (parent_value.length > 0)
           issue.parent_issue_id = issue_for_unique_attr(unique_attr,parent_value,row).id
+          logger.error "parent_issue : " + parent_value
+          logger.error "parent_issue_id : " + issue_for_unique_attr(unique_attr,parent_value,row).id.to_s
         end
       rescue NoIssueForUniqueValue
         if ignore_non_exist
