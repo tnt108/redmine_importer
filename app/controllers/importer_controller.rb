@@ -372,8 +372,8 @@ class ImporterController < ApplicationController
       logger.error "category_name : " + (category_name || '')
 
       if category_name != nil
-        logger.error "IssueCategory.all"
-        IssueCategory.all.each{|c|
+        logger.error "GlobalCategory.all"
+        GlobalCategory.all.each{|c|
           logger.error "category : " + c.name
           if c.name == category_name
             category = c
