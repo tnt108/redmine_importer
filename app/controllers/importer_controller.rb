@@ -366,6 +366,12 @@ class ImporterController < ApplicationController
       issue.priority_id = priority != nil ? priority.id : issue.priority_id
       issue.subject = row[attrs_map["subject"]] || issue.subject
 
+      # category
+      category_name = row[attrs_map["category"]]
+      if category_name != nil
+        category = IssueCategory.find_by_project_id_and_name(issue.project_id, category_name)
+      end
+      
       # optional attributes
       issue.description = row[attrs_map["description"]] || issue.description
       issue.category_id = category != nil ? category.id : issue.category_id
