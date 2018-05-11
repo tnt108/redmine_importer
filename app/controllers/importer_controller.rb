@@ -367,11 +367,17 @@ class ImporterController < ApplicationController
       issue.subject = row[attrs_map["subject"]] || issue.subject
 
       # category
+      category = nil
       category_name = row[attrs_map["category"]]
       logger.error "category_name : " + (category_name || '')
 
       if category_name != nil
-        category = IssueCategory.find_by_project_id_and_name(issue.project_id, category_name)
+        IssueCategory.all.each{|c|
+          if c.name == category_name
+            category = c
+          end
+        }
+            
         if category != nil
           logger.error "category_id : " + (category.id || '')
         end
