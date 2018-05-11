@@ -387,7 +387,7 @@ class ImporterController < ApplicationController
       
       # optional attributes
       issue.description = row[attrs_map["description"]] || issue.description
-      issue.category_id = category != nil ? category.id : issue.category_id
+      issue.global_category_id = category != nil ? category.id : issue.global_category_id
       issue.start_date = row[attrs_map["start_date"]] || issue.start_date
       issue.due_date = row[attrs_map["due_date"]] || issue.due_date
       issue.assigned_to_id = assigned_to != nil ? assigned_to.id : issue.assigned_to_id
