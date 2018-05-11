@@ -381,12 +381,12 @@ class ImporterController < ApplicationController
 
       if row[attrs_map["epic_type"]] != nil
         epic_type = row[attrs_map["epic_type"]]
-        if epic_type != 0 && epic_type != 1 && epic_type != 2
+        if epic_type != "0" && epic_type != "1" && epic_type != "2"
           logger.error "invaild epic_type : " + epic_type.to_s
-          epic_type = 0
+          epic_type = "0"
         end
         logger.error "epic_type : " + epic_type.to_s
-        issue.epic_type = epic_type
+        issue.epic_type = Integer(epic_type)
       end
 
       if row[attrs_map["step_id"]] != nil && Milestone.find(row[attrs_map["step_id"]]) != nil
