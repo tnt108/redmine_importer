@@ -382,10 +382,10 @@ class ImporterController < ApplicationController
       if row[attrs_map["epic_type"]] != nil
         epic_type = row[attrs_map["epic_type"]]
         if epic_type != 0 && epic_type != 1 && epic_type != 2
-          logger.error "invaild epic_type : " + epic_type
+          logger.error "invaild epic_type : " + epic_type.to_s
           epic_type = 0
         end
-        logger.error "epic_type : " + epic_type
+        logger.error "epic_type : " + epic_type.to_s
         issue.epic_type = epic_type
       end
 
