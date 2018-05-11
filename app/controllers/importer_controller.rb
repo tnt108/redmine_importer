@@ -247,8 +247,10 @@ class ImporterController < ApplicationController
         :quote_char=>iip.quote_char, :col_sep=>iip.col_sep}).each do |row|
 
       for index in 0 ... row.size
-        row[index] = row[index].gsub(iip.quote_char, '').gsub("\\n", "\n")
-        #logger.error "row[#{index}] : " + row[index]
+        if row[index] != nil
+          row[index] = row[index].gsub(iip.quote_char, '').gsub("\\n", "\n")
+          #logger.error "row[#{index}] : " + row[index]
+        end
       end
 
       project = Project.find_by_name(row[attrs_map["project"]])
