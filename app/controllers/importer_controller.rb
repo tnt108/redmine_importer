@@ -368,8 +368,13 @@ class ImporterController < ApplicationController
 
       # category
       category_name = row[attrs_map["category"]]
+      logger.error "category_name : " + (category_name || '')
+
       if category_name != nil
         category = IssueCategory.find_by_project_id_and_name(issue.project_id, category_name)
+        if category != nil
+          logger.error "category_id : " + (category.id || '')
+        end
       end
       
       # optional attributes
@@ -388,10 +393,10 @@ class ImporterController < ApplicationController
       if row[attrs_map["epic_type"]] != nil
         epic_type = row[attrs_map["epic_type"]]
         if epic_type != "0" && epic_type != "1" && epic_type != "2"
-          logger.error "invaild epic_type : " + epic_type.to_s
+          # logger.error "invaild epic_type : " + epic_type.to_s
           epic_type = "0"
         end
-        logger.error "epic_type : " + epic_type.to_s
+        # logger.error "epic_type : " + epic_type.to_s
         issue.epic_type = Integer(epic_type)
       end
 
