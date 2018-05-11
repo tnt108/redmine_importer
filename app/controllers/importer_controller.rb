@@ -373,6 +373,7 @@ class ImporterController < ApplicationController
 
       if category_name != nil
         IssueCategory.all.each{|c|
+          logger.error "category : " + c.name
           if c.name == category_name
             category = c
           end
