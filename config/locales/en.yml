@@ -7,7 +7,6 @@ en:
     label_upload_encoding: "Encoding:"
     label_upload_splitter: "Field separator character:"
     label_upload_wrapper: "Field quoting character:"
-    
     label_load_rules: "Load saved rules"
     label_toplines: "Refer to top lines of %{value}："
     label_match_columns: "Matching Columns"
@@ -23,19 +22,14 @@ en:
     label_update_other_project: "Allow updating issues from other projects"
     label_ignore_non_exist: "Ignore non-existant issues"
     label_rule_name: "Input rule name"
-    
     label_import_result: "Import Result"
     label_result_notice: "%{handle_count} issues processed.  %{success_count} issues successfully imported."
     label_result_projects: "Affected projects:"
     label_result_issues: "%{count} issues"
     label_result_failed: "Failed %{count} rows:"
-    
     option_ignore: "Ignore"
-    
     button_upload: "Upload File"
     button_submit: "Submit"
     button_save_rules_and_submit: "Save match rules and submit"
-    
     text_rmi_specify_unique_field_for_update: "Unique field must be specified because Update existing issues is on"
     text_rmi_specify_unique_field_for_column: "Unique field must be specified because the column %{column} needs to refer to other tasks" 
-

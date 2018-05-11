@@ -7,7 +7,6 @@ ko:
     label_upload_encoding: "인코딩 :"
     label_upload_splitter: "필드 분리 문자 :"
     label_upload_wrapper: "필드 인용 문자 :"
-    
     label_load_rules: "저장된 규칙로드"
     label_toplines: "%{value}의 상위 라인 참조："
     label_match_columns: "열 일치 시키기"
@@ -23,19 +22,15 @@ ko:
     label_update_other_project: "다른 프로젝트의 이슈 업데이트 허용"
     label_ignore_non_exist: "존재하지 않는 이슈 무시"
     label_rule_name: "규칙 이름 입력"
-    
     label_import_result: "가져온 결과"
     label_result_notice: "%{handle_count} 이슈가 처리되었습니다. %{success_count} 개의 이슈를 성공적으로 가져 왔습니다."
     label_result_projects: "영향 받는 프로젝트 :"
     label_result_issues: "%{count} 이슈"
     label_result_failed: "실패한 %{count} 행 갯수 :"
-    
     option_ignore: "무시"
-    
     button_upload: "파일 업로드"
     button_submit: "제출"
     button_save_rules_and_submit: "매칭 룰 저장 및 제출"
-    
     text_rmi_specify_unique_field_for_update: "기존 이슈 업데이트가 켜져 있기 때문에 고유 필드를 지정해야합니다."
     text_rmi_specify_unique_field_for_column: "%{column} 열이 다른 작업을 참조해야 하기 때문에 고유 필드를 지정해야합니다." 
 

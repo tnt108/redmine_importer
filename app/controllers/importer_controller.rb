@@ -225,13 +225,13 @@ class ImporterController < ApplicationController
     # check params
     unique_error = nil
     if update_issue
-      unique_error = l(:text_rmi_specify_unique_field_for_update)
+      unique_error = l(:redmine_importer.text_rmi_specify_unique_field_for_update)
     elsif attrs_map["parent_issue"] != nil
-      unique_error = l(:text_rmi_specify_unique_field_for_column,:column => l(:field_parent_issue))
+      unique_error = l(:redmine_importer.text_rmi_specify_unique_field_for_column,:column => l(:field_parent_issue))
     else
       IssueRelation::TYPES.each_key do |rtype|
         if attrs_map[rtype]
-          unique_error = l(:text_rmi_specify_unique_field_for_column,:column => l("label_#{rtype}".to_sym))
+          unique_error = l(:redmine_importer.text_rmi_specify_unique_field_for_column,:column => l("label_#{rtype}".to_sym))
           break
         end
       end
