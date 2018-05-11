@@ -14,10 +14,10 @@
 	</script>
 <% end %>
 
-<h2><%= l('redmine_importer.label_match_columns') %></h2>
+<h2><%= l('label_match_columns') %></h2>
 
 <!--
-<fieldset class="box"><legend><%= l('redmine_importer.label_load_rules') %></legend>
+<fieldset class="box"><legend><%= l('label_load_rules') %></legend>
 	<% @headers.each do |column| %>
 	<% end %>
 </fieldset>
@@ -27,7 +27,7 @@
 	<%= hidden_field_tag 'project_id', @project.id %>
 	<%= hidden_field_tag 'import_timestamp', @import_timestamp %>
 	<fieldset class="box">
-		<legend><%= l('redmine_importer.label_match_select') %></legend>
+		<legend><%= l('label_match_select') %></legend>
 		<% @headers.each do |column| %>
 			<br/>
 			<% matched = ''
@@ -35,41 +35,41 @@
 					matched = v.to_s if v.to_s.gsub(/\s/,'_').gsub(/%_Done/,'done_ratio').casecmp(column) == 0
 				end
 			%>
-			<label class="tabular"> <%= column %>: <%= select_tag "fields_map[#{column}]", options_for_select([l('redmine_importer.option_ignore')] + @attrs, matched ) %></label>
+			<label class="tabular"> <%= column %>: <%= select_tag "fields_map[#{column}]", options_for_select([l('option_ignore')] + @attrs, matched ) %></label>
 		<% end %>
 	</fieldset>
 	
 	<fieldset class="box">
-		<legend><%= l('redmine_importer.label_import_rule') %></legend>
-		<label><%= l('redmine_importer.label_default_tracker') %>
+		<legend><%= l('label_import_rule') %></legend>
+		<label><%= l('label_default_tracker') %>
 		<%= select_tag "default_tracker", options_from_collection_for_select(@project.trackers, 'id', 'name') %></label><br/>
 
-		<label><%= l('redmine_importer.label_unique_field') %>
-		<%= select_tag "unique_field", options_for_select([ l('redmine_importer.option_ignore') ] + @headers, @headers.include?(l('redmine_importer.field_subject')) ? l('redmine_importer.field_subject') : nil) %></label><br/>
+		<label><%= l('label_unique_field') %>
+		<%= select_tag "unique_field", options_for_select([ l('option_ignore') ] + @headers, @headers.include?(l('field_subject')) ? l('field_subject') : nil) %></label><br/>
 
-		<label><%= check_box_tag "send_emails", true, false%> <%= l('redmine_importer.label_importer_send_emails') %> </label><br/>
-		<label><%= check_box_tag "add_categories", true, false %> <%= l('redmine_importer.label_importer_add_categories') %> </label><br/>		
-		<label><%= check_box_tag "add_versions", true, false %> <%= l('redmine_importer.label_importer_add_versions') %> </label><br/>		
-		<label><%= check_box_tag "update_issue", true, false %> <%= l('redmine_importer.label_update_issue') %>
+		<label><%= check_box_tag "send_emails", true, false%> <%= l('label_importer_send_emails') %> </label><br/>
+		<label><%= check_box_tag "add_categories", true, false %> <%= l('label_importer_add_categories') %> </label><br/>		
+		<label><%= check_box_tag "add_versions", true, false %> <%= l('label_importer_add_versions') %> </label><br/>		
+		<label><%= check_box_tag "update_issue", true, false %> <%= l('label_update_issue') %>
 		</label><br/>
 
-		&nbsp;&nbsp;&nbsp;&nbsp;<label><%= l('redmine_importer.label_journal_field') %>
-		<%= select_tag "journal_field", "<option value=\"\">#{l('redmine_importer.option_ignore')}</option>" + options_for_select(@headers), {:disabled => true} %></label><br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;<label><%= l('label_journal_field') %>
+		<%= select_tag "journal_field", "<option value=\"\">#{l('option_ignore')}</option>" + options_for_select(@headers), {:disabled => true} %></label><br/>
 
 		&nbsp;&nbsp;&nbsp;&nbsp;<label><%= check_box_tag "update_other_project", true, false, {:disabled => true} %>
-		<%= l('redmine_importer.label_update_other_project') %></label><br/>
+		<%= l('label_update_other_project') %></label><br/>
 
 		&nbsp;&nbsp;&nbsp;&nbsp;<label><%= check_box_tag "ignore_non_exist", true, false, {:disabled => true} %>
-		<%= l('redmine_importer.label_ignore_non_exist') %></label><br/>
+		<%= l('label_ignore_non_exist') %></label><br/>
 	</fieldset>
 
-	<%= submit_tag l('redmine_importer.button_submit') %>
-  <!--<%= submit_tag l('redmine_importer.button_save_rules_and_submit') %>
-	<%= text_field_tag('rule_name', l('redmine_importer.label_rule_name'), {:size => 32, :maxlength => 32, :onfocus => "if(this.value == '#{l('redmine_importer.label_rule_name')}') {this.value = ''}"}) %>-->
+	<%= submit_tag l('button_submit') %>
+  <!--<%= submit_tag l('button_save_rules_and_submit') %>
+	<%= text_field_tag('rule_name', l('label_rule_name'), {:size => 32, :maxlength => 32, :onfocus => "if(this.value == '#{l('label_rule_name')}') {this.value = ''}"}) %>-->
 	<br/>
 <% end %>
 <hr/>
-<%= l('redmine_importer.label_toplines', @original_filename) %>
+<%= l('label_toplines', @original_filename) %>
 <table class="list">
 	<thead>
 		<tr>
