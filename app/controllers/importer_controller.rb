@@ -375,7 +375,10 @@ class ImporterController < ApplicationController
       issue.fixed_version_id = fixed_version_id != nil ? fixed_version_id : issue.fixed_version_id
       issue.done_ratio = row[attrs_map["done_ratio"]] || issue.done_ratio
       issue.estimated_hours = row[attrs_map["estimated_hours"]] || issue.estimated_hours
-      
+
+      logger.error "epic_type : " + row[attrs_map["epic_type"]]
+      logger.error "step_id : " + row[attrs_map["step_id"]]
+
       if row[attrs_map["epic_type"]] != nil
         epic_type = row[attrs_map["epic_type"]]
         if epic_type != 0 && epic_type != 1 && epic_type != 2
@@ -388,9 +391,6 @@ class ImporterController < ApplicationController
         issue.step_id = row[attrs_map["step_id"]]
       end
       
-      #logger.error "epic_type : " + row[attrs_map["epic_type"]]
-      #logger.error "step_id : " + row[attrs_map["step_id"]]
-
       issue.update_attributes({:created_on => row[attrs_map["created_on"]], :updated_on => row[attrs_map["updated_on"]] })
 
       # parent issues
