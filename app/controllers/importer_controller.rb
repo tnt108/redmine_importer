@@ -371,7 +371,7 @@ class ImporterController < ApplicationController
       # category
       category = nil
       category_name = row[attrs_map["category"]]
-      logger.error "category_name : " + (category_name || '')
+      #logger.error "category_name : " + (category_name || '')
 
       if category_name != nil
         # logger.error "GlobalCategory.all"
@@ -382,9 +382,9 @@ class ImporterController < ApplicationController
           end
         }
             
-        if category != nil
-          logger.error "category_id : " + (category.id.to_s || '')
-        end
+        #if category != nil
+        #  logger.error "category_id : " + (category.id.to_s || '')
+        #end
       end
       
       # optional attributes
@@ -419,10 +419,11 @@ class ImporterController < ApplicationController
       # parent issues
       begin
         parent_value = row[attrs_map["parent_issue"]]
-        logger.error "parent_issue : " + parent_value
+        logger.error "parent_issue : " + (parent_value || '')
         if parent_value && (parent_value.length > 0)
+          logger.error "find parent_issue"
           issue.parent_issue_id = issue_for_unique_attr(unique_attr,parent_value,row).id
-          logger.error "parent_issue_id : " + issue_for_unique_attr(unique_attr,parent_value,row).id.to_s
+          logger.error "parent_issue_id : " + issue.parent_issue_id.to_s
         end
       rescue NoIssueForUniqueValue
         if ignore_non_exist
