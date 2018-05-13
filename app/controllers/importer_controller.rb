@@ -421,7 +421,7 @@ class ImporterController < ApplicationController
         parent_value = row[attrs_map["parent_issue"]]
         logger.error "parent_issue : " + (parent_value || '')
         if parent_value && (parent_value.length > 0)
-          logger.error "find parent_issue"
+          logger.error "find parent_issue : " + unique_attr
           issue.parent_issue_id = issue_for_unique_attr(unique_attr,parent_value,row).id
           logger.error "parent_issue_id : " + issue.parent_issue_id.to_s
         end
