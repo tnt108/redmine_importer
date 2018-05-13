@@ -425,6 +425,11 @@ class ImporterController < ApplicationController
           issue.parent_issue_id = issue_for_unique_attr(unique_attr,parent_value,row).id
           logger.error "parent_issue_id : " + issue.parent_issue_id.to_s
         end
+      rescue NoMethodError
+        @failed_count += 1
+        @failed_issues[@failed_count] = row
+        flash.append(:warning,"When setting the parent for issue #{@failed_count} below, no matches for the value #{parent_value} were found")
+        next
       rescue NoIssueForUniqueValue
         if ignore_non_exist
           @skip_count += 1
