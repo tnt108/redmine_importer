@@ -425,6 +425,7 @@ class ImporterController < ApplicationController
         if parent_value && (parent_value.length > 0)
           logger.error "find parent_issue : " + unique_attr
           issue.parent_issue_id = issue_for_unique_attr(unique_attr,parent_value,row).id
+          issue.parent_epic_issue_id = issue.parent_issue_id = issue.parent_issue_id
           logger.error "parent_issue_id : " + issue.parent_issue_id.to_s
         end
       rescue NoMethodError
