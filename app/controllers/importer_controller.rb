@@ -109,13 +109,15 @@ class ImporterController < ApplicationController
     if @issue_by_unique_attr.has_key?(attr_value)
       return @issue_by_unique_attr[attr_value]
     end
+    
     if unique_attr == "id"
       issues = [Issue.find_by_id(attr_value)]
-      else
+    elsif unique_attr == "subject"
+      issues = [Issue.find_by_subject(attr_value)]
+    else
       query = Query.new(:name => "_importer", :project => @project)
       query.add_filter("status_id", "*", [1])
       query.add_filter(unique_attr, "=", [attr_value])
-      
       issues = Issue.find :all, :conditions => query.statement, :limit => 2, :include => [ :assigned_to, :status, :tracker, :project, :priority, :category, :fixed_version ]
     end
     
@@ -124,7 +126,7 @@ class ImporterController < ApplicationController
       @failed_issues[@failed_count] = row_data
       flash.append(:warning,"Unique field #{unique_attr} with value '#{attr_value}' in issue #{@failed_count} has duplicate record")
       raise MultipleIssuesForUniqueValue, "Unique field #{unique_attr} with value '#{attr_value}' has duplicate record"
-      else
+    else
       if issues.size == 0
         raise NoIssueForUniqueValue, "No issue with #{unique_attr} of '#{attr_value}' found"
       end
